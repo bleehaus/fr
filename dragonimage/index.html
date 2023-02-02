@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dragon Image Grabber by @fallingjaegers</title>
+  <link rel="icon" href="https://cdn.myportfolio.com/7251db90-4d40-4c71-b719-38118349926b/3c682dba-ddc5-4da4-8b14-a01299303e7a_carw_1x1x180.png?h=486be76311788236d39c253d9f44c025">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="./styles.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <header>
+    <nav class="navbar navbar-expand-xxl fixed-top mb-5 bg-body-tertiary">
+      <div class="container-sm col-sm-8">
+        <a class="navbar-brand" href="../index.html"><img src="https://cdn.myportfolio.com/7251db90-4d40-4c71-b719-38118349926b/3c682dba-ddc5-4da4-8b14-a01299303e7a_carw_1x1x180.png?h=486be76311788236d39c253d9f44c025" height="20px"> fallingjaegers</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <div class="navbar-nav me-auto mb-2 mb-lg-0"></div>
+          <div class="d-flex">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Dragon Image Grabber</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="holsimulator.html">Higher or Lower Simulator</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="holsolver.html">Higher or Lower Solver</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-shrink-0 mt-4">
+    <div class="container-sm col-sm-8">
+      <h1 class="mt-5">Dragon Image Grabber</h1>
+      <p>
+        Input a dragon's ID and get all the site images associated with it.
+      </p>
+      <form id="idForm text-light">
+        <label for="id-number" class="form-label">Dragon ID</label>
+        <div class="form-uid input-group input-group-lg">  
+          <span class="input-group-text" id="inputGroup-sizing-sm">#</span>
+          <input id="id-number" class="form-control" type="number" pattern="\d* [0-9]" min="1"></input>
+          <button id="submit-button" class="btn btn-primary" type="button" onclick="getAll()" enterkeyhint="send" title="Submit">Submit</button>
+        </div>
+      </form>
+      <br>
+      <p class="alert alert-warning" role="alert" id="error"></p>
+
+      <div class ="section my-2" id="full350"> 
+        <h3>Fullbody</h3>
+        <a class="dragon-url" href="" target="_blank" rel="noopener" title="Go to dragon">
+          <img id="dragon-img-full350">
+        </a>
+        <div class="info">
+          <label for="dragon-img-full350-url">Image URL</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-full350-url" class="copy-text form-control" aria-label="Image URL"></input>
+            <button class="btn btn-outline-secondary" type="button" onclick="copy('dragon-img-full350-url')" title="Copy to clipboard">
+              Copy
+            </button>
+          </div>
+          <label for="dragon-img-full350-linked-bbcode">BBCode Widget</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-full350-linked-bbcode" class="copy-text form-control" aria-label="BBCode Widget"></input>
+            <button class="btn btn-outline-secondary" type="button" onclick="copy('dragon-img-full350-linked-bbcode')" title="Copy to clipboard">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class ="section my-5" id="full100">
+        <h3>Small Fullbody</h3>
+        <a class="dragon-url" href="" target="_blank" rel="noopener" title="Go to dragon">
+          <img id="dragon-img-full100">
+        </a>
+        <div class="info">
+          <label for="dragon-img-full100-url">Image URL</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-full100-url" class="copy-text form-control" aria-label="Image URL"></input>
+            <button onclick="copy('dragon-img-full100-url')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+          <label for="dragon-img-full100-linked-bbcode">BBCode Widget</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-full100-linked-bbcode" class="copy-text form-control" aria-label="BBCode Widget"></input>
+            <button onclick="copy('dragon-img-full100-linked-bbcode')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section my-5" id="avatar">
+        <h3>Avatar</h3>
+        <a class="dragon-url" href="" target="_blank" rel="noopener" title="Go to dragon">
+          <img id="dragon-img-avatar">
+        </a>
+        <div class="info">
+          <label for="dragon-img-avatar-url">Image URL</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-avatar-url" class="copy-text form-control" aria-label="Image URL"></input>
+            <button onclick="copy('dragon-img-avatar-url')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+          <label for="dragon-img-avatar-linked-bbcode">BBCode Widget</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-avatar-linked-bbcode" class="copy-text form-control" aria-label="BBCode Widget"></input>
+            <button onclick="copy('dragon-img-avatar-linked-bbcode')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section my-5" id="coliportrait">
+        <h3>Coliseum Portrait</h3>
+        <a class="dragon-url" href="" target="_blank" rel="noopener" title="Go to dragon">
+          <img id="dragon-img-coliportrait"></a>
+        <div class="info">
+          <label for="dragon-img-coliportrait-url">Image URL</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-coliportrait-url" class="copy-text form-control" aria-label="Image URL"></input>
+            <button onclick="copy('dragon-img-coliportrait-url')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+          <label for="dragon-img-coliportrait-linked-bbcode">BBCode Widget</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-coliportrait-linked-bbcode" class="copy-text form-control" aria-label="BBCode Widget"></input>
+            <button onclick="copy('dragon-img-coliportrait-linked-bbcode')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section my-5" id="battlesprite">
+        <h3>Coliseum Battle Sprite</h3>
+        <a class="dragon-url" href="" target="_blank" rel="noopener" title="Go to dragon">
+          <img id="dragon-img-battlesprite">
+        </a>
+        <div class="info">
+          <label for="dragon-img-battlesprite-url">Image URL</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-battlesprite-url" class="copy-text form-control" aria-label="Image URL"></input>
+            <button onclick="copy('dragon-img-battlesprite-url')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+          <label for="dragon-img-battlesprite-linked-bbcode">BBCode Widget</label>
+          <div class="input-group mb-3">
+            <input type="text" id="dragon-img-battlesprite-linked-bbcode" class="copy-text form-control" aria-label="BBCode Widget"></input>
+            <button onclick="copy('dragon-img-battlesprite-linked-bbcode')" class="btn btn-outline-secondary" title="Copy to clipboard" type="button">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-5 alert alert-light d-flex align-items-center" role="alert">
+        <div>
+          <strong>Note:</strong> Deities, hatchlings, and eternally youthful dragons cannot fight in the coliseum and therefore don't have coliseum portraits or coliseum battle sprites. If all the images are broken, that means the dragon ID you entered doesn't exist (yet).
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer mt-auto my-5">
+    <div class="container-sm col-sm-8 my-3">
+      <span>
+        This is a <a href="https://www1.flightrising.com/" target="_blank" rel="noopener">Flight Rising</a> helper tool made by <a href="https://www1.flightrising.com/clan-profile/140442" target="_blank" rel="noopener">@fallingjaegers</a>. All images belong to Flight Rising, a browser game created by Stormlight Workshop, LLC.
+      </span>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+@media screen and (max-width: 900px) {
+	#dragon-img-full350 {
+		max-width: 100%;
+	}
+}
+@media screen and (max-width: 400px) {
+	#dragon-img-full350 {
+		width: 100%;
+		max-width: 350px;
+	}
+}
